@@ -1,0 +1,273 @@
+{% extends "base.html" %}
+
+{% block title %}
+Tasks — StudyFlow
+{% endblock %}
+
+
+{% block content %}
+
+<!-- =========================
+     PAGE HEADER
+========================== -->
+
+<div class="page-header">
+
+    <div>
+        <h2>Your Tasks</h2>
+
+        <p>
+            Organize everything you need to get done.
+        </p>
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ADD TASK FORM
+========================== -->
+
+<div class="card form-card">
+
+    <div class="section-header">
+
+        <div>
+            <h3>Add a new task</h3>
+
+            <span>
+                StudyFlow will use this information to build your AI plan.
+            </span>
+        </div>
+
+    </div>
+
+
+    <form id="taskForm">
+
+        <div class="form-grid">
+
+
+            <!-- TITLE -->
+
+            <div class="form-group full">
+
+                <label for="title">
+                    Task name
+                </label>
+
+                <input
+                    type="text"
+                    id="title"
+                    class="form-control"
+                    placeholder="e.g. Finish physics exercises"
+                    required
+                >
+
+            </div>
+
+
+            <!-- SUBJECT -->
+
+            <div class="form-group">
+
+                <label for="subject">
+                    Subject
+                </label>
+
+                <input
+                    type="text"
+                    id="subject"
+                    class="form-control"
+                    placeholder="e.g. Physics"
+                    required
+                >
+
+            </div>
+
+
+            <!-- DEADLINE -->
+
+            <div class="form-group">
+
+                <label for="deadline">
+                    Deadline
+                </label>
+
+                <input
+                    type="datetime-local"
+                    id="deadline"
+                    class="form-control"
+                    required
+                >
+
+            </div>
+
+
+            <!-- ESTIMATED TIME -->
+
+            <div class="form-group">
+
+                <label for="estimated_minutes">
+                    Estimated time
+                </label>
+
+                <input
+                    type="number"
+                    id="estimated_minutes"
+                    class="form-control"
+                    placeholder="60"
+                    min="5"
+                    max="1000"
+                    value="30"
+                    required
+                >
+
+            </div>
+
+
+            <!-- DIFFICULTY -->
+
+            <div class="form-group">
+
+                <label for="difficulty">
+                    Difficulty
+                </label>
+
+                <select
+                    id="difficulty"
+                    class="form-control"
+                >
+
+                    <option value="1">
+                        Easy
+                    </option>
+
+                    <option value="2" selected>
+                        Medium
+                    </option>
+
+                    <option value="3">
+                        Hard
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- IMPORTANCE -->
+
+            <div class="form-group">
+
+                <label for="importance">
+                    Importance
+                </label>
+
+                <select
+                    id="importance"
+                    class="form-control"
+                >
+
+                    <option value="1">
+                        Low
+                    </option>
+
+                    <option value="2" selected>
+                        Medium
+                    </option>
+
+                    <option value="3">
+                        High
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- SUBMIT -->
+
+        <div class="form-actions">
+
+            <button
+                type="submit"
+                class="btn btn-primary"
+                id="addTaskButton"
+            >
+                + Add Task
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<!-- =========================
+     TASK LIST
+========================== -->
+
+<div class="card section-card">
+
+    <div class="section-header">
+
+        <h3>
+            All Tasks
+        </h3>
+
+        <span id="taskCount">
+            0 tasks
+        </span>
+
+    </div>
+
+
+    <div
+        class="task-list"
+        id="tasksList"
+    >
+
+        <div class="empty-state">
+
+            <div>
+
+                <div class="empty-icon">
+                    ✓
+                </div>
+
+                <p>
+                    No tasks yet.
+                </p>
+
+                <p
+                    style="
+                        margin-top: 5px;
+                        color: var(--text-muted);
+                        font-size: 10px;
+                    "
+                >
+                    Add your first task above.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script
+    src="{{ url_for('static', filename='js/tasks.js') }}"
+></script>
+
+{% endblock %}

@@ -1,0 +1,372 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard — StudyFlow
+{% endblock %}
+
+
+{% block content %}
+
+<!-- =========================
+     PAGE HEADER
+========================== -->
+
+<div class="page-header">
+
+    <div>
+        <h2>Good to see you 👋</h2>
+
+        <p>
+            Here's what's happening with your studies today.
+        </p>
+    </div>
+
+    <a href="/planner" class="btn btn-primary">
+        ✦ Generate AI Plan
+    </a>
+
+</div>
+
+
+<!-- =========================
+     STATISTICS
+========================== -->
+
+<div class="stats-grid">
+
+    <div class="card stat-card">
+
+        <div class="stat-top">
+
+            <span class="stat-label">
+                Total Tasks
+            </span>
+
+            <div class="stat-icon">
+                ✓
+            </div>
+
+        </div>
+
+        <div
+            class="stat-value"
+            id="totalTasks"
+        >
+            0
+        </div>
+
+        <div class="stat-subtitle">
+            Tasks in your workspace
+        </div>
+
+    </div>
+
+
+    <div class="card stat-card">
+
+        <div class="stat-top">
+
+            <span class="stat-label">
+                Completed
+            </span>
+
+            <div class="stat-icon">
+                ✓
+            </div>
+
+        </div>
+
+        <div
+            class="stat-value"
+            id="completedTasks"
+        >
+            0
+        </div>
+
+        <div class="stat-subtitle">
+            Tasks finished
+        </div>
+
+    </div>
+
+
+    <div class="card stat-card">
+
+        <div class="stat-top">
+
+            <span class="stat-label">
+                Study Time
+            </span>
+
+            <div class="stat-icon">
+                ◷
+            </div>
+
+        </div>
+
+        <div
+            class="stat-value"
+            id="studyTime"
+        >
+            0m
+        </div>
+
+        <div class="stat-subtitle">
+            Total recorded study time
+        </div>
+
+    </div>
+
+
+    <div class="card stat-card">
+
+        <div class="stat-top">
+
+            <span class="stat-label">
+                Completion
+            </span>
+
+            <div class="stat-icon">
+                ↗
+            </div>
+
+        </div>
+
+        <div
+            class="stat-value"
+            id="completionPercentage"
+        >
+            0%
+        </div>
+
+        <div class="stat-subtitle">
+            Overall progress
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MAIN CONTENT
+========================== -->
+
+<div class="content-grid">
+
+
+    <!-- =====================
+         PRIORITY TASKS
+    ====================== -->
+
+    <div class="card section-card">
+
+        <div class="section-header">
+
+            <h3>
+                Priority Tasks
+            </h3>
+
+            <span>
+                What needs your attention
+            </span>
+
+        </div>
+
+
+        <div
+            class="task-list"
+            id="priorityTasks"
+        >
+
+            <div class="empty-state">
+
+                <div>
+                    <div class="empty-icon">
+                        ✓
+                    </div>
+
+                    <p>
+                        Loading your tasks...
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================
+         STUDY OVERVIEW
+    ====================== -->
+
+    <div class="card section-card">
+
+        <div class="section-header">
+
+            <h3>
+                Today's Focus
+            </h3>
+
+            <span>
+                Your progress
+            </span>
+
+        </div>
+
+
+        <div class="progress-row">
+
+            <span>
+                Tasks completed
+            </span>
+
+            <strong id="focusPercentage">
+                0%
+            </strong>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="focusProgress"
+                style="width: 0%"
+            ></div>
+
+        </div>
+
+
+        <div
+            style="
+                margin-top: 28px;
+                padding-top: 20px;
+                border-top: 1px solid var(--border);
+            "
+        >
+
+            <div class="section-header">
+
+                <h3>
+                    Need a plan?
+                </h3>
+
+            </div>
+
+
+            <p
+                style="
+                    color: var(--text-secondary);
+                    font-size: 11px;
+                    line-height: 1.7;
+                    margin-bottom: 17px;
+                "
+            >
+                Tell StudyFlow how much time you have and
+                AI will organize your unfinished tasks into
+                a realistic study session.
+            </p>
+
+
+            <a
+                href="/planner"
+                class="btn btn-secondary"
+                style="width: 100%;"
+            >
+                Open AI Planner →
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     QUICK ACTIONS
+========================== -->
+
+<div
+    class="card section-card"
+    style="margin-top: 18px;"
+>
+
+    <div class="section-header">
+
+        <h3>
+            Quick Actions
+        </h3>
+
+        <span>
+            Get things done
+        </span>
+
+    </div>
+
+
+    <div
+        style="
+            display: grid;
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        "
+    >
+
+        <a
+            href="/tasks"
+            class="btn btn-secondary"
+            style="justify-content: flex-start;"
+        >
+            <span style="color: var(--accent);">
+                +
+            </span>
+
+            Add a task
+        </a>
+
+
+        <a
+            href="/planner"
+            class="btn btn-secondary"
+            style="justify-content: flex-start;"
+        >
+            <span style="color: var(--accent);">
+                ✦
+            </span>
+
+            Build a study plan
+        </a>
+
+
+        <a
+            href="/progress"
+            class="btn btn-secondary"
+            style="justify-content: flex-start;"
+        >
+            <span style="color: var(--green);">
+                ↗
+            </span>
+
+            View progress
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script
+    src="{{ url_for('static', filename='js/dashboard.js') }}"
+></script>
+
+{% endblock %}

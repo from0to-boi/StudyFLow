@@ -1,0 +1,290 @@
+{% extends "base.html" %}
+
+{% block title %}
+Progress — StudyFlow
+{% endblock %}
+
+
+{% block content %}
+
+<!-- =========================
+     PAGE HEADER
+========================== -->
+
+<div class="page-header">
+
+    <div>
+        <h2>Your Progress</h2>
+
+        <p>
+            See how consistent you've been with your studies.
+        </p>
+    </div>
+
+</div>
+
+
+<!-- =========================
+     PROGRESS STATS
+========================== -->
+
+<div class="stats-grid">
+
+    <div class="card stat-card">
+
+        <div class="stat-top">
+            <span class="stat-label">
+                Completion
+            </span>
+
+            <div class="stat-icon">
+                ↗
+            </div>
+        </div>
+
+        <div
+            class="stat-value"
+            id="progressCompletion"
+        >
+            0%
+        </div>
+
+        <div class="stat-subtitle">
+            Overall task completion
+        </div>
+
+    </div>
+
+
+    <div class="card stat-card">
+
+        <div class="stat-top">
+            <span class="stat-label">
+                Completed
+            </span>
+
+            <div class="stat-icon">
+                ✓
+            </div>
+        </div>
+
+        <div
+            class="stat-value"
+            id="progressCompleted"
+        >
+            0
+        </div>
+
+        <div class="stat-subtitle">
+            Tasks finished
+        </div>
+
+    </div>
+
+
+    <div class="card stat-card">
+
+        <div class="stat-top">
+            <span class="stat-label">
+                Remaining
+            </span>
+
+            <div class="stat-icon">
+                ◷
+            </div>
+        </div>
+
+        <div
+            class="stat-value"
+            id="progressRemaining"
+        >
+            0
+        </div>
+
+        <div class="stat-subtitle">
+            Tasks still to complete
+        </div>
+
+    </div>
+
+
+    <div class="card stat-card">
+
+        <div class="stat-top">
+            <span class="stat-label">
+                Study Time
+            </span>
+
+            <div class="stat-icon">
+                ⏱
+            </div>
+        </div>
+
+        <div
+            class="stat-value"
+            id="progressStudyTime"
+        >
+            0m
+        </div>
+
+        <div class="stat-subtitle">
+            Recorded focus time
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     OVERALL PROGRESS
+========================== -->
+
+<div
+    class="card section-card"
+    style="margin-bottom: 18px;"
+>
+
+    <div class="section-header">
+
+        <h3>
+            Overall Progress
+        </h3>
+
+        <span id="overallPercentage">
+            0%
+        </span>
+
+    </div>
+
+
+    <div class="progress-container">
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="overallProgressBar"
+                style="width: 0%;"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <p
+        id="progressMessage"
+        style="
+            margin-top: 14px;
+            color: var(--text-secondary);
+            font-size: 11px;
+        "
+    >
+        Start completing tasks to track your progress.
+    </p>
+
+</div>
+
+
+<!-- =========================
+     SUBJECT BREAKDOWN
+========================== -->
+
+<div class="card section-card">
+
+    <div class="section-header">
+
+        <h3>
+            Subject Breakdown
+        </h3>
+
+        <span>
+            Tasks by subject
+        </span>
+
+    </div>
+
+
+    <div
+        id="subjectBreakdown"
+        class="task-list"
+    >
+
+        <div class="empty-state">
+
+            <div>
+
+                <div class="empty-icon">
+                    ↗
+                </div>
+
+                <p>
+                    No subject data yet.
+                </p>
+
+                <p
+                    style="
+                        margin-top: 5px;
+                        color: var(--text-muted);
+                        font-size: 10px;
+                    "
+                >
+                    Add some tasks to see your breakdown.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MOTIVATION
+========================== -->
+
+<div
+    class="card section-card"
+    style="margin-top: 18px;"
+>
+
+    <div class="section-header">
+
+        <h3>
+            Keep going.
+        </h3>
+
+        <span>
+            StudyFlow
+        </span>
+
+    </div>
+
+
+    <p
+        id="motivationText"
+        style="
+            color: var(--text-secondary);
+            font-size: 12px;
+            line-height: 1.7;
+        "
+    >
+        Every completed task is progress.
+        Keep building your momentum.
+    </p>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script
+    src="{{ url_for('static', filename='js/progress.js') }}"
+></script>
+
+{% endblock %}

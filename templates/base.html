@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>{% block title %}StudyFlow{% endblock %}</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">✦</div>
+
+            <div>
+                <h1>StudyFlow</h1>
+                <span>AI Study Coach</span>
+            </div>
+        </div>
+
+
+        <nav class="navigation">
+
+            <p class="nav-label">WORKSPACE</p>
+
+            <a
+                href="/"
+                class="nav-item {% if request.path == '/' %}active{% endif %}"
+            >
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a
+                href="/tasks"
+                class="nav-item {% if request.path == '/tasks' %}active{% endif %}"
+            >
+                <span class="nav-icon">✓</span>
+                Tasks
+            </a>
+
+            <a
+                href="/planner"
+                class="nav-item {% if request.path == '/planner' %}active{% endif %}"
+            >
+                <span class="nav-icon">✦</span>
+                AI Planner
+                <span class="ai-badge">AI</span>
+            </a>
+
+            <a
+                href="/progress"
+                class="nav-item {% if request.path == '/progress' %}active{% endif %}"
+            >
+                <span class="nav-icon">↗</span>
+                Progress
+            </a>
+
+        </nav>
+
+
+        <!-- =========================
+             SIDEBAR BOTTOM
+        ========================== -->
+
+        <div class="sidebar-bottom">
+
+            <div class="ai-status">
+
+                <div class="status-dot"></div>
+
+                <div>
+                    <strong>AI Ready</strong>
+                    <span>StudyFlow is online</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+        <!-- Mobile header -->
+
+        <header class="mobile-header">
+
+            <div class="mobile-brand">
+                <div class="brand-icon">✦</div>
+                <strong>StudyFlow</strong>
+            </div>
+
+        </header>
+
+
+        <!-- Page content -->
+
+        <div class="page-container">
+
+            {% block content %}
+            {% endblock %}
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         GLOBAL JAVASCRIPT
+    ========================== -->
+
+    <script
+        src="{{ url_for('static', filename='js/app.js') }}"
+    ></script>
+
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+</html>
